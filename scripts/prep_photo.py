@@ -11,7 +11,7 @@ from rembg import remove
 from PIL import Image
 
 # ===== CONFIG SECTION - TUNE THIS =====
-CLIP_LIMIT = 3.0  # CLAHE contrast enhancement (higher = more contrast)
+CLIP_LIMIT = 3.2  # CLAHE contrast enhancement (higher = more contrast)
 TILE_GRID_SIZE = (8, 8)  # CLAHE tile grid size
 # ======================================
 

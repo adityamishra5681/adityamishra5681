@@ -51,7 +51,7 @@ def create_heatmap_svg(data):
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '  <style>',
-        '    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");',
+        '    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");',
         '    text { font-family: "Inter", sans-serif; font-size: 12px; fill: #1f2937; }',
         '    .stat-label { font-weight: 600; }',
         '    .stat-value { font-weight: 400; }',

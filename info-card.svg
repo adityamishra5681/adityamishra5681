@@ -1,30 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="490" height="370" viewBox="0 0 490 370">
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="404" viewBox="0 0 490 404">
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");
     .label { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; fill: #374151; }
     .value { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 400; fill: #1f2937; }
     .host { font-family: "Inter", monospace; font-size: 11px; fill: #6b7280; }
   </style>
-  <rect width="490" height="370" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect width="490" height="404" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
   <text x="20" y="35" class="label">Education:</text>
   <text x="130" y="35" class="value">BCA (Hons.) in Data Science &amp; AI</text>
   <text x="20" y="57" class="label">University:</text>
   <text x="130" y="57" class="value">Techno India University, Kolkata</text>
   <text x="20" y="79" class="label">Focus:</text>
-  <text x="130" y="79" class="value">Machine Learning · Data Analytics · AI</text>
+  <text x="130" y="79" class="value">AI/ML · Web Development · Data Science</text>
   <text x="20" y="112.0" class="label">Languages:</text>
-  <text x="130" y="112.0" class="value">Python · SQL · JavaScript · Java</text>
-  <text x="20" y="134.0" class="label">ML/DS Stack:</text>
-  <text x="130" y="134.0" class="value">scikit-learn · pandas · NumPy · TensorFlow</text>
-  <text x="20" y="156.0" class="label">Tools:</text>
-  <text x="130" y="156.0" class="value">Jupyter · VS Code · Git · Power BI</text>
-  <text x="20" y="178.0" class="label">Databases:</text>
-  <text x="130" y="178.0" class="value">PostgreSQL · MySQL · SQLite</text>
-  <text x="20" y="211.0" class="label">Current Work:</text>
-  <text x="130" y="211.0" class="value">Building ML models &amp; data pipelines</text>
-  <text x="20" y="233.0" class="label">Learning:</text>
-  <text x="130" y="233.0" class="value">MLOps · Cloud (AWS) · NLP · Computer Vision</text>
-  <text x="20" y="255.0" class="label">Interests:</text>
-  <text x="130" y="255.0" class="value">Open Source · Data Visualization · AI Ethics</text>
-  <text x="470" y="350" text-anchor="end" class="host">github.com/adityamishra5681</text>
+  <text x="130" y="112.0" class="value">Python · JavaScript · SQL · Java</text>
+  <text x="20" y="134.0" class="label">Web Stack:</text>
+  <text x="130" y="134.0" class="value">HTML · CSS · JavaScript · React</text>
+  <text x="20" y="156.0" class="label">Data Stack:</text>
+  <text x="130" y="156.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
+  <text x="20" y="178.0" class="label">Tools:</text>
+  <text x="130" y="178.0" class="value">VS Code · Jupyter · Git · Power BI</text>
+  <text x="20" y="200.0" class="label">Databases:</text>
+  <text x="130" y="200.0" class="value">PostgreSQL · MySQL · SQLite</text>
+  <text x="20" y="233.0" class="label">Current Work:</text>
+  <text x="130" y="233.0" class="value">Portfolio site · ML experiments · profile automation</text>
+  <text x="20" y="255.0" class="label">Learning:</text>
+  <text x="130" y="255.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
+  <text x="20" y="277.0" class="label">Highlights:</text>
+  <text x="130" y="277.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
+  <text x="470" y="384" text-anchor="end" class="host">github.com/adityamishra5681</text>
 </svg>

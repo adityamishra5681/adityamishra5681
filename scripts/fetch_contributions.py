@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 import json
 import sys
 from datetime import datetime
+import re
 
 # ===== CONFIG SECTION =====
 GH_PROFILE_USER = "adityamishra5681"
@@ -16,9 +17,9 @@ OUTPUT_FILE = "contributions.json"
 # ==========================
 
 def fetch_contributions(username):
-    """Scrape GitHub contributions from profile page"""
+    """Scrape GitHub contributions from the public contributions page"""
     
-    url = f"https://github.com/{username}"
+    url = f"https://github.com/users/{username}/contributions"
     
     print(f"Fetching contributions from: {url}")
     
@@ -33,54 +34,47 @@ def fetch_contributions(username):
     
     soup = BeautifulSoup(response.text, 'html.parser')
     
-    # Find contribution calendar
-    calendar = soup.find('svg', class_='js-calendar-graph-svg')
-    
-    if not calendar:
-        print("Warning: Could not find contribution calendar")
-        # Return empty data structure
-        return {
-            'username': username,
-            'fetched_at': datetime.now().isoformat(),
-            'contributions': [],
-            'total_contributions': 0,
-            'current_streak': 0,
-            'longest_streak': 0
-        }
-    
-    # Parse contribution data
+    # Parse contribution data from the contribution calendar table
     contributions = []
-    
-    # Find all day cells
-    days = calendar.find_all('rect', class_='ContributionCalendar-day')
-    
+    days = soup.find_all('td', class_='ContributionCalendar-day')
+
     for day in days:
         date = day.get('data-date')
-        count = int(day.get('data-level', 0))
-        
+        count = 0
+
+        tooltip = day.find_next_sibling('tool-tip')
+        tooltip_text = tooltip.get_text(" ", strip=True) if tooltip else ""
+
+        if tooltip_text:
+            match = re.search(r'(\d+) contributions? on', tooltip_text)
+            if match:
+                count = int(match.group(1))
+            elif 'No contributions' not in tooltip_text:
+                count = int(day.get('data-level', 0))
+
         if date:
-            contributions.append({
-                'date': date,
-                'count': count
-            })
+            contributions.append({'date': date, 'count': count})
     
     # Calculate stats
     total = sum(c['count'] for c in contributions)
     
-    # Calculate streaks (simplified)
-    current_streak = 0
+    # Calculate streaks from the chronological daily series
     longest_streak = 0
     temp_streak = 0
-    
-    for c in reversed(contributions):
+
+    for c in contributions:
         if c['count'] > 0:
             temp_streak += 1
             longest_streak = max(longest_streak, temp_streak)
-            if current_streak == 0:
-                current_streak = temp_streak
         else:
-            if current_streak == 0:
-                temp_streak = 0
+            temp_streak = 0
+
+    current_streak = 0
+    for c in reversed(contributions):
+        if c['count'] > 0:
+            current_streak += 1
+        else:
+            break
     
     data = {
         'username': username,

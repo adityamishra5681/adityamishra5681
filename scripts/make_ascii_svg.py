@@ -12,10 +12,10 @@ import sys
 INPUT_IMAGE = "source-prepped.png"
 OUTPUT_SVG = "avi-ascii.svg"
 WIDTH = 80                    # ASCII art width in characters
-CONTRAST = 1.5                # Image contrast boost (1.0 = no change)
-GAMMA = 1.2                   # Gamma correction (1.0 = no change, >1 = brighter)
-WHITE_FLOOR = 30              # Minimum brightness (0-255, raise to avoid pure black)
-STATIC = 0                    # Set to 1 to render final frame without animation
+CONTRAST = 1.6                # Image contrast boost (1.0 = no change)
+GAMMA = 1.15                  # Gamma correction (1.0 = no change, >1 = brighter)
+WHITE_FLOOR = 26              # Minimum brightness (0-255, raise to avoid pure black)
+STATIC = 1                    # Set to 1 to render final frame without animation
 # ======================================
 
 # ASCII characters from darkest to brightest
@@ -88,7 +88,7 @@ def create_animated_svg(ascii_grid, output_file, static=False):
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{int(width)}" height="{int(height)}" viewBox="0 0 {int(width)} {int(height)}">',
         '  <style>',
-        '    @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap");',
+        '    @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&amp;display=swap");',
         '    text { font-family: "Courier Prime", monospace; font-size: ' + str(font_size) + 'px; fill: #000; }',
         '  </style>',
         f'  <rect width="{int(width)}" height="{int(height)}" fill="#fff"/>',

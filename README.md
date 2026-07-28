@@ -15,8 +15,8 @@
 **BCA Student · AI/ML Enthusiast · Web Developer**
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-aditya5681.dpdns.org-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://aditya5681.dpdns.org)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/adityamishra5681)
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/os.remove_adi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adityamishra5681)
+[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/os.remove_adi)
 
 <br>
 

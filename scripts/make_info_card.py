@@ -7,16 +7,17 @@ make_info_card.py - Generate info card SVG with experience, stack, and highlight
 ROWS = [
     ("Education", "BCA (Hons.) in Data Science & AI"),
     ("University", "Techno India University, Kolkata"),
-    ("Focus", "Machine Learning · Data Analytics · AI"),
+    ("Focus", "AI/ML · Web Development · Data Science"),
     ("", ""),  # Empty row for spacing
-    ("Languages", "Python · SQL · JavaScript · Java"),
-    ("ML/DS Stack", "scikit-learn · pandas · NumPy · TensorFlow"),
-    ("Tools", "Jupyter · VS Code · Git · Power BI"),
+    ("Languages", "Python · JavaScript · SQL · Java"),
+    ("Web Stack", "HTML · CSS · JavaScript · React"),
+    ("Data Stack", "pandas · NumPy · scikit-learn · OpenCV"),
+    ("Tools", "VS Code · Jupyter · Git · Power BI"),
     ("Databases", "PostgreSQL · MySQL · SQLite"),
     ("", ""),  # Empty row for spacing
-    ("Current Work", "Building ML models & data pipelines"),
-    ("Learning", "MLOps · Cloud (AWS) · NLP · Computer Vision"),
-    ("Interests", "Open Source · Data Visualization · AI Ethics"),
+    ("Current Work", "Portfolio site · ML experiments · profile automation"),
+    ("Learning", "MLOps · Computer Vision · NLP · Cloud"),
+    ("Highlights", "GitHub profile automation · clean UI builds · data storytelling"),
 ]
 
 HOST = "github.com/adityamishra5681"
@@ -24,7 +25,7 @@ OUTPUT_FILE = "info-card.svg"
 
 # Layout settings
 W = 490
-H = 370  # Match portrait height - adjust if content overflows
+H = 404  # Match rendered portrait height - adjust if content overflows
 PADDING = 20
 FONT_SIZE = 13
 LINE_HEIGHT = 22
@@ -36,7 +37,7 @@ def create_info_card():
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
         '  <style>',
-        '    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");',
+        '    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");',
         '    .label { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 600; fill: #374151; }',
         '    .value { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 400; fill: #1f2937; }',
         '    .host { font-family: "Inter", monospace; font-size: 11px; fill: #6b7280; }',
