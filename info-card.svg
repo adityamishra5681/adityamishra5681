@@ -1,32 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="490" height="404" viewBox="0 0 490 404">
+  <defs>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");
-    .label { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; fill: #374151; }
-    .value { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 400; fill: #1f2937; }
-    .host { font-family: "Inter", monospace; font-size: 11px; fill: #6b7280; }
+    .label { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; fill: #f3f4f6; }
+    .value { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 400; fill: #e5e7eb; }
+    .host { font-family: "Inter", monospace; font-size: 11px; fill: #9ca3af; }
+    .line { stroke: #374151; stroke-width: 0.8; opacity: 0.75; }
   </style>
-  <rect width="490" height="404" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="20" y="35" class="label">Education:</text>
-  <text x="130" y="35" class="value">BCA (Hons.) in Data Science &amp; AI</text>
-  <text x="20" y="57" class="label">University:</text>
-  <text x="130" y="57" class="value">Techno India University, Kolkata</text>
-  <text x="20" y="79" class="label">Focus:</text>
-  <text x="130" y="79" class="value">AI/ML · Web Development · Data Science</text>
-  <text x="20" y="112.0" class="label">Languages:</text>
-  <text x="130" y="112.0" class="value">Python · JavaScript · SQL · Java</text>
-  <text x="20" y="134.0" class="label">Web Stack:</text>
-  <text x="130" y="134.0" class="value">HTML · CSS · JavaScript · React</text>
-  <text x="20" y="156.0" class="label">Data Stack:</text>
-  <text x="130" y="156.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
-  <text x="20" y="178.0" class="label">Tools:</text>
-  <text x="130" y="178.0" class="value">VS Code · Jupyter · Git · Power BI</text>
-  <text x="20" y="200.0" class="label">Databases:</text>
-  <text x="130" y="200.0" class="value">PostgreSQL · MySQL · SQLite</text>
-  <text x="20" y="233.0" class="label">Current Work:</text>
-  <text x="130" y="233.0" class="value">Portfolio site · ML experiments · profile automation</text>
-  <text x="20" y="255.0" class="label">Learning:</text>
-  <text x="130" y="255.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
-  <text x="20" y="277.0" class="label">Highlights:</text>
-  <text x="130" y="277.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
+  <rect width="490" height="404" rx="18" fill="url(#panel)" stroke="#1f2937" stroke-width="1.2"/>
+  <rect x="12" y="12" width="466" height="380" rx="14" fill="none" stroke="#374151" stroke-width="0.8" opacity="0.75"/>
+  <line x1="24" y1="28" x2="466" y2="28" class="line"/>
+  <line x1="24" y1="376" x2="466" y2="376" class="line"/>
+  <text x="20" y="30" class="host">SYSTEM PROFILE</text>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.08s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="39" x2="28" y2="39" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="35" class="label">Education:</text>
+    <text x="150" y="35" class="value">BCA (Hons.) in Data Science &amp; AI</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.14s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="61" x2="28" y2="61" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="57" class="label">University:</text>
+    <text x="150" y="57" class="value">Techno India University, Kolkata</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.20s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="83" x2="28" y2="83" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="79" class="label">Focus:</text>
+    <text x="150" y="79" class="value">AI/ML · Web Development · Data Science</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.32s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="116.0" x2="28" y2="116.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="112.0" class="label">Languages:</text>
+    <text x="150" y="112.0" class="value">Python · JavaScript · SQL · Java</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.38s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="138.0" x2="28" y2="138.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="134.0" class="label">Web Stack:</text>
+    <text x="150" y="134.0" class="value">HTML · CSS · JavaScript · React</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.44s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="160.0" x2="28" y2="160.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="156.0" class="label">Data Stack:</text>
+    <text x="150" y="156.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="182.0" x2="28" y2="182.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="178.0" class="label">Tools:</text>
+    <text x="150" y="178.0" class="value">VS Code · Jupyter · Git · Power BI</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.56s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="204.0" x2="28" y2="204.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="200.0" class="label">Databases:</text>
+    <text x="150" y="200.0" class="value">PostgreSQL · MySQL · SQLite</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.68s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="237.0" x2="28" y2="237.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="233.0" class="label">Current Work:</text>
+    <text x="150" y="233.0" class="value">Portfolio site · ML experiments · profile automation</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.74s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="259.0" x2="28" y2="259.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="255.0" class="label">Learning:</text>
+    <text x="150" y="255.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.80s" dur="0.18s" fill="freeze"/>
+    <line x1="20" y1="281.0" x2="28" y2="281.0" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>
+    <text x="36" y="277.0" class="label">Highlights:</text>
+    <text x="150" y="277.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
+  </g>
   <text x="470" y="384" text-anchor="end" class="host">github.com/adityamishra5681</text>
 </svg>

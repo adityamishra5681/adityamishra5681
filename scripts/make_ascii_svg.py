@@ -15,7 +15,10 @@ WIDTH = 80                    # ASCII art width in characters
 CONTRAST = 1.6                # Image contrast boost (1.0 = no change)
 GAMMA = 1.15                  # Gamma correction (1.0 = no change, >1 = brighter)
 WHITE_FLOOR = 26              # Minimum brightness (0-255, raise to avoid pure black)
-STATIC = 1                    # Set to 1 to render final frame without animation
+STATIC = 0                    # Set to 1 to render final frame without animation
+BACKGROUND = "#030712"
+TEXT_COLOR = "#F9FAFB"
+ACCENT_COLOR = "#6B7280"
 # ======================================
 
 # ASCII characters from darkest to brightest
@@ -70,28 +73,40 @@ def image_to_ascii(image_path, width=80):
     return ascii_grid
 
 def create_animated_svg(ascii_grid, output_file, static=False):
-    """Create SVG with typing animation"""
+    """Create SVG with a dark terminal-style line-by-line reveal."""
     
     font_size = 12
     char_width = font_size * 0.6
     line_height = font_size * 1.2
     
-    width = len(ascii_grid[0]) * char_width + 40
-    height = len(ascii_grid) * line_height + 40
+    width = len(ascii_grid[0]) * char_width + 60
+    height = len(ascii_grid) * line_height + 80
     
     # Calculate total characters for animation
     total_chars = sum(len(row) for row in ascii_grid)
     
     # Animation duration in seconds (typing effect)
-    duration = 3.0  # 3 seconds to type everything
+    duration = 3.2  # 3.2 seconds to type everything
     
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{int(width)}" height="{int(height)}" viewBox="0 0 {int(width)} {int(height)}">',
+        '  <defs>',
+        '    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">',
+        f'      <stop offset="0%" stop-color="{BACKGROUND}"/>',
+        '      <stop offset="100%" stop-color="#111827"/>',
+        '    </linearGradient>',
+        '  </defs>',
         '  <style>',
         '    @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&amp;display=swap");',
-        '    text { font-family: "Courier Prime", monospace; font-size: ' + str(font_size) + 'px; fill: #000; }',
+        '    text { font-family: "Courier Prime", monospace; font-size: ' + str(font_size) + 'px; fill: ' + TEXT_COLOR + '; }',
+        '    .scan { stroke: #4b5563; stroke-width: 1; stroke-dasharray: 6 6; opacity: 0.35; }',
+        '    .prompt { fill: ' + ACCENT_COLOR + '; }',
         '  </style>',
-        f'  <rect width="{int(width)}" height="{int(height)}" fill="#fff"/>',
+        f'  <rect width="{int(width)}" height="{int(height)}" fill="url(#bg)"/>',
+        f'  <rect x="10" y="10" width="{int(width) - 20}" height="{int(height) - 20}" rx="18" fill="none" stroke="#1f2937" stroke-width="1.2"/>',
+        f'  <line x1="22" y1="22" x2="{int(width) - 22}" y2="22" class="scan"/>',
+        f'  <line x1="22" y1="{int(height) - 22}" x2="{int(width) - 22}" y2="{int(height) - 22}" class="scan"/>',
+        f'  <text x="22" y="20" class="prompt">&gt;</text>',
     ]
     
     char_index = 0
@@ -99,12 +114,18 @@ def create_animated_svg(ascii_grid, output_file, static=False):
     for row_idx, row in enumerate(ascii_grid):
         y = 30 + row_idx * line_height
         
+        row_group = [
+            f'  <g opacity="0">',
+            f'    <animate attributeName="opacity" from="0" to="1" begin="{row_idx * 0.12:.3f}s" dur="0.2s" fill="freeze"/>',
+            f'    <line x1="20" y1="{y + 3:.1f}" x2="34" y2="{y + 3:.1f}" stroke="{ACCENT_COLOR}" stroke-width="0.8" opacity="0.45"/>',
+        ]
+        
         for col_idx, char in enumerate(row):
             if char == ' ':
                 char_index += 1
                 continue
             
-            x = 20 + col_idx * char_width
+            x = 40 + col_idx * char_width
             
             # Escape special XML characters
             display_char = char
@@ -116,19 +137,20 @@ def create_animated_svg(ascii_grid, output_file, static=False):
                 display_char = '&amp;'
             
             if static or STATIC:
-                # Static version - show immediately
-                svg_lines.append(f'  <text x="{x:.1f}" y="{y:.1f}">{display_char}</text>')
+                row_group.append(f'    <text x="{x:.1f}" y="{y:.1f}">{display_char}</text>')
             else:
-                # Animated version - fade in character by character
-                delay = (char_index / total_chars) * duration
-                svg_lines.append(
-                    f'  <text x="{x:.1f}" y="{y:.1f}">'
+                delay = (row_idx * 0.12) + ((char_index / total_chars) * 0.08)
+                row_group.append(
+                    f'    <text x="{x:.1f}" y="{y:.1f}" opacity="0">'
+                    f'<animate attributeName="opacity" from="0" to="1" begin="{delay:.3f}s" dur="0.04s" fill="freeze"/>'
                     f'{display_char}'
-                    f'<animate attributeName="opacity" from="0" to="1" begin="{delay:.3f}s" dur="0.05s" fill="freeze"/>'
                     f'</text>'
                 )
             
             char_index += 1
+        
+        row_group.append('  </g>')
+        svg_lines.extend(row_group)
     
     svg_lines.append('</svg>')
     

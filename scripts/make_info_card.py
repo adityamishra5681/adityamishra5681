@@ -32,34 +32,52 @@ LINE_HEIGHT = 22
 # =========================================
 
 def create_info_card():
-    """Generate the info card SVG"""
+    """Generate the info card SVG with a dark terminal-inspired reveal."""
     
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+        '  <defs>',
+        '    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#030712"/>',
+        '      <stop offset="100%" stop-color="#111827"/>',
+        '    </linearGradient>',
+        '  </defs>',
         '  <style>',
         '    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");',
-        '    .label { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 600; fill: #374151; }',
-        '    .value { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 400; fill: #1f2937; }',
-        '    .host { font-family: "Inter", monospace; font-size: 11px; fill: #6b7280; }',
+        '    .label { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 600; fill: #f3f4f6; }',
+        '    .value { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 400; fill: #e5e7eb; }',
+        '    .host { font-family: "Inter", monospace; font-size: 11px; fill: #9ca3af; }',
+        '    .line { stroke: #374151; stroke-width: 0.8; opacity: 0.75; }',
         '  </style>',
-        f'  <rect width="{W}" height="{H}" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>',
+        f'  <rect width="{W}" height="{H}" rx="18" fill="url(#panel)" stroke="#1f2937" stroke-width="1.2"/>',
+        f'  <rect x="12" y="12" width="{W - 24}" height="{H - 24}" rx="14" fill="none" stroke="#374151" stroke-width="0.8" opacity="0.75"/>',
+        f'  <line x1="24" y1="28" x2="{W - 24}" y2="28" class="line"/>',
+        f'  <line x1="24" y1="{H - 28}" x2="{W - 24}" y2="{H - 28}" class="line"/>',
+        f'  <text x="{PADDING}" y="{PADDING + 10}" class="host">SYSTEM PROFILE</text>',
     ]
     
     y = PADDING + 15
     
-    for label, value in ROWS:
+    for idx, (label, value) in enumerate(ROWS):
         if label == "" and value == "":
             # Empty row - just add spacing
             y += LINE_HEIGHT * 0.5
             continue
         
+        row_group = [
+            f'  <g opacity="0">',
+            f'    <animate attributeName="opacity" from="0" to="1" begin="{0.08 + idx * 0.06:.2f}s" dur="0.18s" fill="freeze"/>',
+            f'    <line x1="{PADDING}" y1="{y + 4}" x2="{PADDING + 8}" y2="{y + 4}" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>',
+        ]
         if label:
             # Label: value format
-            svg_lines.append(f'  <text x="{PADDING}" y="{y}" class="label">{escape_xml(label)}:</text>')
-            svg_lines.append(f'  <text x="{PADDING + 110}" y="{y}" class="value">{escape_xml(value)}</text>')
+            row_group.append(f'    <text x="{PADDING + 16}" y="{y}" class="label">{escape_xml(label)}:</text>')
+            row_group.append(f'    <text x="{PADDING + 130}" y="{y}" class="value">{escape_xml(value)}</text>')
         else:
             # Just value (for longer text)
-            svg_lines.append(f'  <text x="{PADDING}" y="{y}" class="value">{escape_xml(value)}</text>')
+            row_group.append(f'    <text x="{PADDING + 16}" y="{y}" class="value">{escape_xml(value)}</text>')
+        row_group.append('  </g>')
+        svg_lines.extend(row_group)
         
         y += LINE_HEIGHT
     
