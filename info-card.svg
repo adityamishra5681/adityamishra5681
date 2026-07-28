@@ -1,99 +1,111 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="490" height="430" viewBox="0 0 490 430">
-  <defs>
-    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#030712"/>
-      <stop offset="1" stop-color="#111827"/>
-    </linearGradient>
-  </defs>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap");
-    .label { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; fill: #f9fafb; }
-    .value { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400; fill: #d1d5db; }
-    .muted { font-family: "Inter", monospace; font-size: 10.5px; fill: #9ca3af; }
-    .title { font-family: "Inter", sans-serif; font-size: 16px; font-weight: 600; fill: #f3f4f6; }
-    .bar-bg { fill: #0f172a; stroke: #1f2937; stroke-width: 1; }
-    .bar-fill { fill: #3fb950; }
-  </style>
-  <rect width="490" height="430" rx="16" fill="url(#panel)" stroke="#30363d" stroke-width="1"/>
-  <rect x="0.8" y="0.8" width="488.4" height="428.4" rx="16" fill="none" stroke="#374151" stroke-width="0.8"/>
-  <line x1="0" y1="38" x2="490" y2="38" stroke="#30363d"/>
-  <circle cx="20" cy="15" r="5" fill="#ff5f56"/>
-  <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>
-  <circle cx="52" cy="15" r="5" fill="#27c93f"/>
-  <text x="245.0" y="19" text-anchor="middle" class="muted">aditya@github: ~$ ./info.sh</text>
-  <text x="24" y="24" class="title">Profile Snapshot</text>
-  <line x1="24" y1="30" x2="466" y2="30" stroke="#1f2937" stroke-width="0.8"/>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.06s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="56" class="label">Education:</text>
-    <text x="182" y="56" class="value">BCA (Hons.) in Data Science &amp; AI</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.10s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="78" class="label">University:</text>
-    <text x="182" y="78" class="value">Techno India University, Kolkata</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.14s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="100" class="label">Focus:</text>
-    <text x="182" y="100" class="value">AI/ML · Web Development · Data Science</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.22s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="133.0" class="label">Languages:</text>
-    <text x="182" y="133.0" class="value">Python · JavaScript · SQL · Java</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.26s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="155.0" class="label">Web Stack:</text>
-    <text x="182" y="155.0" class="value">HTML · CSS · JavaScript · React</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.30s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="177.0" class="label">Data Stack:</text>
-    <text x="182" y="177.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.34s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="199.0" class="label">Tools:</text>
-    <text x="182" y="199.0" class="value">VS Code · Jupyter · Git · Power BI</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.38s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="221.0" class="label">Databases:</text>
-    <text x="182" y="221.0" class="value">PostgreSQL · MySQL · SQLite</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.46s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="254.0" class="label">Current Work:</text>
-    <text x="182" y="254.0" class="value">Portfolio site · ML experiments · profile automation</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="276.0" class="label">Learning:</text>
-    <text x="182" y="276.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
-  </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.54s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="298.0" class="label">Highlights:</text>
-    <text x="182" y="298.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
-  </g>
-  <text x="24" y="328.0" class="label">Skills</text>
-  <text x="24" y="342.0" class="muted">Python</text>
-  <rect x="100" y="334.0" width="140" height="7" rx="3.5" class="bar-bg"/>
-  <rect x="100" y="334.0" width="133" height="7" rx="3.5" class="bar-fill"/>
-  <text x="246" y="342.0" class="muted">95%</text>
-  <text x="24" y="360.0" class="muted">JavaScript</text>
-  <rect x="100" y="352.0" width="140" height="7" rx="3.5" class="bar-bg"/>
-  <rect x="100" y="352.0" width="112" height="7" rx="3.5" class="bar-fill"/>
-  <text x="246" y="360.0" class="muted">80%</text>
-  <text x="24" y="378.0" class="muted">ML / AI</text>
-  <rect x="100" y="370.0" width="140" height="7" rx="3.5" class="bar-bg"/>
-  <rect x="100" y="370.0" width="123" height="7" rx="3.5" class="bar-fill"/>
-  <text x="246" y="378.0" class="muted">88%</text>
-  <text x="24" y="396.0" class="muted">Cloud</text>
-  <rect x="100" y="388.0" width="140" height="7" rx="3.5" class="bar-bg"/>
-  <rect x="100" y="388.0" width="86" height="7" rx="3.5" class="bar-fill"/>
-  <text x="246" y="396.0" class="muted">62%</text>
-  <text x="466" y="406" text-anchor="end" class="muted">github.com/adityamishra5681</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="390" viewBox="0 0 480 390" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+<defs>
+<linearGradient id="ibg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#111722"/>
+<stop offset="1" stop-color="#0d1117"/>
+</linearGradient>
+</defs>
+<rect width="480" height="390" rx="12" fill="url(#ibg)"/>
+<rect x="0.5" y="0.5" width="479" height="389" rx="12" fill="none" stroke="#30363d"/>
+<line x1="0" y1="30" x2="480" y2="30" stroke="#30363d"/>
+<circle cx="20" cy="15.0" r="5" fill="#ff5f56"/>
+<circle cx="36" cy="15.0" r="5" fill="#ffbd2e"/>
+<circle cx="52" cy="15.0" r="5" fill="#27c93f"/>
+<text x="240.0" y="19.0" fill="#7d8590" font-size="12" text-anchor="middle">aditya@github: ~$ neofetch</text>
+<g transform="translate(0,5)">
+<text x="20" y="60.0" font-size="22" font-weight="800" fill="#3fb950">
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.05s" dur="0.01s" fill="freeze"/>A</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.10s" dur="0.01s" fill="freeze"/>d</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.15s" dur="0.01s" fill="freeze"/>i</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.20s" dur="0.01s" fill="freeze"/>t</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.25s" dur="0.01s" fill="freeze"/>y</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.30s" dur="0.01s" fill="freeze"/>a</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.35s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.01s" fill="freeze"/>M</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.45s" dur="0.01s" fill="freeze"/>i</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.01s" fill="freeze"/>s</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.55s" dur="0.01s" fill="freeze"/>h</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.60s" dur="0.01s" fill="freeze"/>r</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.65s" dur="0.01s" fill="freeze"/>a</tspan>
+</text>
+<text x="20" y="82.0" font-size="12" font-weight="400" fill="#d9d1d9">
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.45s" dur="0.01s" fill="freeze"/>D</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.01s" fill="freeze"/>a</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.55s" dur="0.01s" fill="freeze"/>t</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.60s" dur="0.01s" fill="freeze"/>a</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.65s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.70s" dur="0.01s" fill="freeze"/>S</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.75s" dur="0.01s" fill="freeze"/>c</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.80s" dur="0.01s" fill="freeze"/>i</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.85s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.90s" dur="0.01s" fill="freeze"/>n</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.95s" dur="0.01s" fill="freeze"/>c</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.00s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.05s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.10s" dur="0.01s" fill="freeze"/>&amp;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.15s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.20s" dur="0.01s" fill="freeze"/>A</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.25s" dur="0.01s" fill="freeze"/>I</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.30s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.35s" dur="0.01s" fill="freeze"/>•</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.40s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.45s" dur="0.01s" fill="freeze"/>W</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.50s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.55s" dur="0.01s" fill="freeze"/>b</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.60s" dur="0.01s" fill="freeze"/>&#160;</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.65s" dur="0.01s" fill="freeze"/>D</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.70s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.75s" dur="0.01s" fill="freeze"/>v</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.80s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.85s" dur="0.01s" fill="freeze"/>l</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.90s" dur="0.01s" fill="freeze"/>o</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.95s" dur="0.01s" fill="freeze"/>p</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.00s" dur="0.01s" fill="freeze"/>m</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.05s" dur="0.01s" fill="freeze"/>e</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.10s" dur="0.01s" fill="freeze"/>n</tspan>
+<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="2.15s" dur="0.01s" fill="freeze"/>t</tspan>
+</text>
+<text x="20" y="108.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">education: </tspan>
+<tspan fill="#f0f6fc">BCA (Hons.) in Data Science &amp; AI</tspan>
+</text>
+<text x="20" y="128.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">university: </tspan>
+<tspan fill="#f0f6fc">Techno India University, Kolkata</tspan>
+</text>
+<text x="20" y="148.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">focus: </tspan>
+<tspan fill="#f0f6fc">AI/ML • Web Development • Data Science</tspan>
+</text>
+<text x="20" y="168.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">languages: </tspan>
+<tspan fill="#f0f6fc">Python • JavaScript • SQL • Java</tspan>
+</text>
+<text x="20" y="188.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">stack: </tspan>
+<tspan fill="#f0f6fc">HTML • CSS • React • pandas</tspan>
+</text>
+<text x="20" y="208.0" font-size="12" font-weight="600" fill="#c9d1d9">
+<tspan fill="#3fb950">current: </tspan>
+<tspan fill="#f0f6fc">Portfolio • ML experiments • automation</tspan>
+</text>
+<text x="20" y="238.0" font-size="12" font-weight="600" fill="#c9d1d9">skills</text>
+<text x="20" y="256.0" font-size="11" fill="#7d8590">Python</text>
+<rect x="92" y="248.0" width="140" height="7" rx="3.5" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+<rect x="92" y="248.0" width="133" height="7" rx="3.5" fill="#3fb950"/>
+<text x="244" y="256.0" font-size="11" fill="#7d8590">95%</text>
+<text x="20" y="274.0" font-size="11" fill="#7d8590">JavaScript</text>
+<rect x="92" y="266.0" width="140" height="7" rx="3.5" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+<rect x="92" y="266.0" width="112" height="7" rx="3.5" fill="#3fb950"/>
+<text x="244" y="274.0" font-size="11" fill="#7d8590">80%</text>
+<text x="20" y="292.0" font-size="11" fill="#7d8590">ML/AI</text>
+<rect x="92" y="284.0" width="140" height="7" rx="3.5" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+<rect x="92" y="284.0" width="123" height="7" rx="3.5" fill="#3fb950"/>
+<text x="244" y="292.0" font-size="11" fill="#7d8590">88%</text>
+<text x="20" y="310.0" font-size="11" fill="#7d8590">Cloud</text>
+<rect x="92" y="302.0" width="140" height="7" rx="3.5" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+<rect x="92" y="302.0" width="86" height="7" rx="3.5" fill="#3fb950"/>
+<text x="244" y="310.0" font-size="11" fill="#7d8590">62%</text>
+<text x="20" y="372.0" fill="#7d8590" font-size="11">github.com/adityamishra5681</text>
+</g>
 </svg>
