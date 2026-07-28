@@ -8,13 +8,13 @@ ROWS = [
     ("Education", "BCA (Hons.) in Data Science & AI"),
     ("University", "Techno India University, Kolkata"),
     ("Focus", "AI/ML · Web Development · Data Science"),
-    ("", ""),  # Empty row for spacing
+    ("", ""),
     ("Languages", "Python · JavaScript · SQL · Java"),
     ("Web Stack", "HTML · CSS · JavaScript · React"),
     ("Data Stack", "pandas · NumPy · scikit-learn · OpenCV"),
     ("Tools", "VS Code · Jupyter · Git · Power BI"),
     ("Databases", "PostgreSQL · MySQL · SQLite"),
-    ("", ""),  # Empty row for spacing
+    ("", ""),
     ("Current Work", "Portfolio site · ML experiments · profile automation"),
     ("Learning", "MLOps · Computer Vision · NLP · Cloud"),
     ("Highlights", "GitHub profile automation · clean UI builds · data storytelling"),
@@ -23,23 +23,23 @@ ROWS = [
 HOST = "github.com/adityamishra5681"
 OUTPUT_FILE = "info-card.svg"
 
-# Layout settings
 W = 490
-H = 404  # Match rendered portrait height - adjust if content overflows
-PADDING = 20
-FONT_SIZE = 13
+H = 430
+PADDING = 24
+LABEL_COLUMN = 118
+VALUE_COLUMN = 150
+FONT_SIZE = 12
 LINE_HEIGHT = 22
 # =========================================
 
+
 def create_info_card():
-    """Generate the info card SVG with a dark terminal-inspired reveal."""
-    
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
         '  <defs>',
-        '    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#030712"/>',
-        '      <stop offset="100%" stop-color="#111827"/>',
+        '    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">',
+        '      <stop offset="0" stop-color="#030712"/>',
+        '      <stop offset="1" stop-color="#111827"/>',
         '    </linearGradient>',
         '  </defs>',
         '  <style>',
@@ -47,62 +47,51 @@ def create_info_card():
         '    .label { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 600; fill: #f3f4f6; }',
         '    .value { font-family: "Inter", sans-serif; font-size: ' + str(FONT_SIZE) + 'px; font-weight: 400; fill: #e5e7eb; }',
         '    .host { font-family: "Inter", monospace; font-size: 11px; fill: #9ca3af; }',
-        '    .line { stroke: #374151; stroke-width: 0.8; opacity: 0.75; }',
         '  </style>',
-        f'  <rect width="{W}" height="{H}" rx="18" fill="url(#panel)" stroke="#1f2937" stroke-width="1.2"/>',
-        f'  <rect x="12" y="12" width="{W - 24}" height="{H - 24}" rx="14" fill="none" stroke="#374151" stroke-width="0.8" opacity="0.75"/>',
-        f'  <line x1="24" y1="28" x2="{W - 24}" y2="28" class="line"/>',
-        f'  <line x1="24" y1="{H - 28}" x2="{W - 24}" y2="{H - 28}" class="line"/>',
-        f'  <text x="{PADDING}" y="{PADDING + 10}" class="host">SYSTEM PROFILE</text>',
+        f'  <rect width="{W}" height="{H}" rx="16" fill="url(#panel)" stroke="#30363d" stroke-width="1"/>',
+        f'  <rect x="0.8" y="0.8" width="{W - 1.6}" height="{H - 1.6}" rx="16" fill="none" stroke="#374151" stroke-width="0.8"/>',
+        '  <line x1="0" y1="38" x2="490" y2="38" stroke="#30363d"/>',
+        '  <circle cx="20" cy="15" r="5" fill="#ff5f56"/>',
+        '  <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>',
+        '  <circle cx="52" cy="15" r="5" fill="#27c93f"/>',
+        f'  <text x="{W / 2:.1f}" y="19" text-anchor="middle" class="host">aditya@github: ~$ ./info.sh</text>',
     ]
-    
-    y = PADDING + 15
-    
+
+    y = 54
     for idx, (label, value) in enumerate(ROWS):
         if label == "" and value == "":
-            # Empty row - just add spacing
             y += LINE_HEIGHT * 0.5
             continue
-        
-        row_group = [
+
+        svg_lines.extend([
             f'  <g opacity="0">',
-            f'    <animate attributeName="opacity" from="0" to="1" begin="{0.08 + idx * 0.06:.2f}s" dur="0.18s" fill="freeze"/>',
-            f'    <line x1="{PADDING}" y1="{y + 4}" x2="{PADDING + 8}" y2="{y + 4}" stroke="#9ca3af" stroke-width="0.8" opacity="0.6"/>',
-        ]
-        if label:
-            # Label: value format
-            row_group.append(f'    <text x="{PADDING + 16}" y="{y}" class="label">{escape_xml(label)}:</text>')
-            row_group.append(f'    <text x="{PADDING + 130}" y="{y}" class="value">{escape_xml(value)}</text>')
-        else:
-            # Just value (for longer text)
-            row_group.append(f'    <text x="{PADDING + 16}" y="{y}" class="value">{escape_xml(value)}</text>')
-        row_group.append('  </g>')
-        svg_lines.extend(row_group)
-        
+            f'    <animate attributeName="opacity" from="0" to="1" begin="{0.08 + idx * 0.045:.2f}s" dur="0.16s" fill="freeze"/>',
+            f'    <text x="{PADDING}" y="{y}" class="label">{escape_xml(label)}:</text>',
+            f'    <text x="{PADDING + VALUE_COLUMN}" y="{y}" class="value">{escape_xml(value)}</text>',
+            '  </g>',
+        ])
         y += LINE_HEIGHT
-    
-    # Add host at bottom
+
     svg_lines.append(f'  <text x="{W - PADDING}" y="{H - PADDING}" text-anchor="end" class="host">{escape_xml(HOST)}</text>')
-    
     svg_lines.append('</svg>')
-    
-    svg_content = '\n'.join(svg_lines)
-    
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write(svg_content)
-    
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(svg_lines))
+
     print(f"✓ Created: {OUTPUT_FILE}")
     print(f"  Size: {W}x{H}px")
     print(f"  Rows: {len([r for r in ROWS if r[0] or r[1]])}")
 
+
 def escape_xml(text):
-    """Escape special XML characters"""
-    return (text
-            .replace('&', '&amp;')
-            .replace('<', '&lt;')
-            .replace('>', '&gt;')
-            .replace('"', '&quot;')
-            .replace("'", '&apos;'))
+    return (
+        text.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+        .replace("'", "&apos;")
+    )
+
 
 if __name__ == "__main__":
     create_info_card()
