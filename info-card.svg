@@ -6,10 +6,13 @@
     </linearGradient>
   </defs>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap");
-    .label { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; fill: #f3f4f6; }
-    .value { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400; fill: #e5e7eb; }
-    .host { font-family: "Inter", monospace; font-size: 11px; fill: #9ca3af; }
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap");
+    .label { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; fill: #f9fafb; }
+    .value { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400; fill: #d1d5db; }
+    .muted { font-family: "Inter", monospace; font-size: 10.5px; fill: #9ca3af; }
+    .title { font-family: "Inter", sans-serif; font-size: 16px; font-weight: 600; fill: #f3f4f6; }
+    .bar-bg { fill: #0f172a; stroke: #1f2937; stroke-width: 1; }
+    .bar-fill { fill: #3fb950; }
   </style>
   <rect width="490" height="430" rx="16" fill="url(#panel)" stroke="#30363d" stroke-width="1"/>
   <rect x="0.8" y="0.8" width="488.4" height="428.4" rx="16" fill="none" stroke="#374151" stroke-width="0.8"/>
@@ -17,61 +20,80 @@
   <circle cx="20" cy="15" r="5" fill="#ff5f56"/>
   <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>
   <circle cx="52" cy="15" r="5" fill="#27c93f"/>
-  <text x="245.0" y="19" text-anchor="middle" class="host">aditya@github: ~$ ./info.sh</text>
+  <text x="245.0" y="19" text-anchor="middle" class="muted">aditya@github: ~$ ./info.sh</text>
+  <text x="24" y="24" class="title">Profile Snapshot</text>
+  <line x1="24" y1="30" x2="466" y2="30" stroke="#1f2937" stroke-width="0.8"/>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.08s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="54" class="label">Education:</text>
-    <text x="174" y="54" class="value">BCA (Hons.) in Data Science &amp; AI</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.06s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="56" class="label">Education:</text>
+    <text x="182" y="56" class="value">BCA (Hons.) in Data Science &amp; AI</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.12s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="76" class="label">University:</text>
-    <text x="174" y="76" class="value">Techno India University, Kolkata</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.10s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="78" class="label">University:</text>
+    <text x="182" y="78" class="value">Techno India University, Kolkata</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.17s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="98" class="label">Focus:</text>
-    <text x="174" y="98" class="value">AI/ML · Web Development · Data Science</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.14s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="100" class="label">Focus:</text>
+    <text x="182" y="100" class="value">AI/ML · Web Development · Data Science</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" begin="0.22s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="133.0" class="label">Languages:</text>
+    <text x="182" y="133.0" class="value">Python · JavaScript · SQL · Java</text>
   </g>
   <g opacity="0">
     <animate attributeName="opacity" from="0" to="1" begin="0.26s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="131.0" class="label">Languages:</text>
-    <text x="174" y="131.0" class="value">Python · JavaScript · SQL · Java</text>
+    <text x="24" y="155.0" class="label">Web Stack:</text>
+    <text x="182" y="155.0" class="value">HTML · CSS · JavaScript · React</text>
   </g>
   <g opacity="0">
     <animate attributeName="opacity" from="0" to="1" begin="0.30s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="153.0" class="label">Web Stack:</text>
-    <text x="174" y="153.0" class="value">HTML · CSS · JavaScript · React</text>
+    <text x="24" y="177.0" class="label">Data Stack:</text>
+    <text x="182" y="177.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.35s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="175.0" class="label">Data Stack:</text>
-    <text x="174" y="175.0" class="value">pandas · NumPy · scikit-learn · OpenCV</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.34s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="199.0" class="label">Tools:</text>
+    <text x="182" y="199.0" class="value">VS Code · Jupyter · Git · Power BI</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.40s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="197.0" class="label">Tools:</text>
-    <text x="174" y="197.0" class="value">VS Code · Jupyter · Git · Power BI</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.38s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="221.0" class="label">Databases:</text>
+    <text x="182" y="221.0" class="value">PostgreSQL · MySQL · SQLite</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.44s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="219.0" class="label">Databases:</text>
-    <text x="174" y="219.0" class="value">PostgreSQL · MySQL · SQLite</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.46s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="254.0" class="label">Current Work:</text>
+    <text x="182" y="254.0" class="value">Portfolio site · ML experiments · profile automation</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.53s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="252.0" class="label">Current Work:</text>
-    <text x="174" y="252.0" class="value">Portfolio site · ML experiments · profile automation</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="276.0" class="label">Learning:</text>
+    <text x="182" y="276.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.57s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="274.0" class="label">Learning:</text>
-    <text x="174" y="274.0" class="value">MLOps · Computer Vision · NLP · Cloud</text>
+    <animate attributeName="opacity" from="0" to="1" begin="0.54s" dur="0.16s" fill="freeze"/>
+    <text x="24" y="298.0" class="label">Highlights:</text>
+    <text x="182" y="298.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
   </g>
-  <g opacity="0">
-    <animate attributeName="opacity" from="0" to="1" begin="0.62s" dur="0.16s" fill="freeze"/>
-    <text x="24" y="296.0" class="label">Highlights:</text>
-    <text x="174" y="296.0" class="value">GitHub profile automation · clean UI builds · data storytelling</text>
-  </g>
-  <text x="466" y="406" text-anchor="end" class="host">github.com/adityamishra5681</text>
+  <text x="24" y="328.0" class="label">Skills</text>
+  <text x="24" y="342.0" class="muted">Python</text>
+  <rect x="100" y="334.0" width="140" height="7" rx="3.5" class="bar-bg"/>
+  <rect x="100" y="334.0" width="133" height="7" rx="3.5" class="bar-fill"/>
+  <text x="246" y="342.0" class="muted">95%</text>
+  <text x="24" y="360.0" class="muted">JavaScript</text>
+  <rect x="100" y="352.0" width="140" height="7" rx="3.5" class="bar-bg"/>
+  <rect x="100" y="352.0" width="112" height="7" rx="3.5" class="bar-fill"/>
+  <text x="246" y="360.0" class="muted">80%</text>
+  <text x="24" y="378.0" class="muted">ML / AI</text>
+  <rect x="100" y="370.0" width="140" height="7" rx="3.5" class="bar-bg"/>
+  <rect x="100" y="370.0" width="123" height="7" rx="3.5" class="bar-fill"/>
+  <text x="246" y="378.0" class="muted">88%</text>
+  <text x="24" y="396.0" class="muted">Cloud</text>
+  <rect x="100" y="388.0" width="140" height="7" rx="3.5" class="bar-bg"/>
+  <rect x="100" y="388.0" width="86" height="7" rx="3.5" class="bar-fill"/>
+  <text x="246" y="396.0" class="muted">62%</text>
+  <text x="466" y="406" text-anchor="end" class="muted">github.com/adityamishra5681</text>
 </svg>
