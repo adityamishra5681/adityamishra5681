@@ -1,7 +1,7 @@
 <h1 align="center">Hi, I'm Aditya Mishra</h1>
 <p align="center">
   <b>BCA (Hons.) in Data Science & AI</b> at <b>Techno India University, Kolkata</b><br/>
-  I build with data, learn with intent, and aim to ship practical work that matters.
+  I build practical data projects, learn with discipline, and focus on work that is clear, useful, and real.
 </p>
 
 <p align="center">
@@ -23,22 +23,43 @@
   </a>
 </p>
 
+<table align="center">
+  <tr>
+    <td align="center" width="260">
+      <img src="assets/dotted-avatar.svg" width="220" alt="Dotted Aditya avatar" />
+    </td>
+    <td>
+
+### Bio
+I am Aditya Mishra, a BCA (Hons.) student in Data Science & AI at Techno India University, Kolkata. I enjoy Python, SQL, machine learning, and data analysis, and I am building a portfolio that shows real learning, not just random code.
+
+### Snapshot
+- BCA (Hons.) in Data Science & AI
+- Techno India University, Kolkata
+- Focused on Python, SQL, machine learning, and analytics
+- Building projects that are simple, strong, and presentation-ready
+
+    </td>
+  </tr>
+</table>
+
 ```text
 ╔══════════════════════════════════════════════════════════════╗
 ║  ADITYA MISHRA                                               ║
-║  BCA (Hons.) | Data Science & AI | Techno India University   ║
+║  Data Science & AI • BCA (Hons.)                             ║
 ║  Python • SQL • Machine Learning • Analytics                 ║
-║  Building practical projects with clarity and consistency    ║
+║  Portfolio-first builder with disciplined learning           ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-### About Me
-- BCA (Hons.) student specializing in Data Science & AI
-- Interested in Python, SQL, machine learning, data analysis, and AI applications
-- Focused on building practical projects that turn ideas into useful outputs
-- Motivated by clean logic, measurable progress, and consistent improvement
+### What Makes This Profile Stronger
+- Clear academic identity with your honours degree and specialization
+- A visible bio that explains what you do and what you are building
+- A custom dotted avatar section instead of a plain profile layout
+- Stronger project emphasis with your portfolio link at the top
+- Better structure for people scanning your profile quickly
 
 ### Education
 - BCA (Hons.) in Data Science & AI
@@ -50,10 +71,17 @@
 - Visual reports and dashboards that turn numbers into decisions
 - Portfolio projects that show growth, not just code
 
-### What I Am Working On
+### Current Focus
 - Stronger foundations in Python, statistics, and data analysis
 - Real-world projects using pandas, NumPy, visualization, and model workflows
 - Learning how to turn raw data into insight, decisions, and action
+- Making every public project look professional and easy to understand
+
+### Featured Projects
+- [Portfolio](https://github.com/adityamishra5681/portfolio) - my strongest project and personal showcase
+- [Website](https://aditya5681.dpdns.org) - my live personal site
+- Add your best data analysis project here
+- Add your best machine learning project here
 
 ### Tech Stack
 <p>
@@ -72,16 +100,6 @@
 - Exploratory data analysis and reporting
 - Machine learning fundamentals and model evaluation
 - Portfolio-building through practical, resume-ready projects
-
-### Current Goals
-- Build a stronger project portfolio in data science and AI
-- Improve consistency across learning, coding, and documentation
-- Keep each project simple, useful, and easy to understand
-
-### Featured Projects
-- [Portfolio](https://github.com/adityamishra5681/portfolio) - my strongest project and personal showcase
-- Add your best data analysis project here
-- Add your best machine learning project here
 
 ### GitHub Stats
 <p align="center">
