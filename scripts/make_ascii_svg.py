@@ -4,8 +4,6 @@ make_ascii_svg.py - Convert image to animated ASCII art SVG
 Reads source-prepped.png and outputs avi-ascii.svg
 """
 
-import base64
-import io
 import numpy as np
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
@@ -67,76 +65,38 @@ def escape_xml(text):
     )
 
 
-def build_image_data_uri(image_path):
-    img = Image.open(image_path).convert("RGB")
-    img = img.resize((420, 520), Image.Resampling.LANCZOS)
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
-    return f"data:image/png;base64,{encoded}"
-
-
 def create_animated_svg(ascii_grid, output_file, static=False, input_image=INPUT_IMAGE):
-    width = 760
-    height = 760
-    photo_uri = build_image_data_uri(input_image)
+    width = 840
+    height = 905
 
     svg_lines = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{int(width)}" height="{int(height)}" viewBox="0 0 {int(width)} {int(height)}">',
-        '  <defs>',
-        '    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">',
-        f'      <stop offset="0" stop-color="{BACKGROUND}"/>',
-        '      <stop offset="1" stop-color="#0d1117"/>',
-        '    </linearGradient>',
-        '  </defs>',
-        f'  <rect width="{int(width)}" height="{int(height)}" rx="14" fill="url(#bg)"/>',
-        f'  <rect x="0.8" y="0.8" width="{int(width) - 1.6}" height="{int(height) - 1.6}" rx="14" fill="none" stroke="#30363d" stroke-width="1"/>',
-        f'  <line x1="0" y1="38" x2="{int(width)}" y2="38" stroke="#30363d"/>',
-        '  <circle cx="20" cy="15" r="5" fill="#ff5f56"/>',
-        '  <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>',
-        '  <circle cx="52" cy="15" r="5" fill="#27c93f"/>',
-        f'  <text x="{int(width) / 2:.1f}" y="19" fill="#7d8590" font-size="12" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">aditya@github: ~$ ./portrait.sh</text>',
-        '  <g opacity="0">',
-        '    <animate attributeName="opacity" from="0" to="1" begin="0.00s" dur="0.24s" fill="freeze"/>',
-        '    <rect x="42" y="60" width="676" height="648" rx="12" fill="#0c1118" stroke="#1f2937" stroke-width="1.2"/>',
-        '    <rect x="56" y="74" width="648" height="620" rx="10" fill="#090d12" stroke="#2b313d" stroke-width="1"/>',
-        '    <text x="80" y="112" fill="#7d8590" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">[ok] loading terminal portrait</text>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{int(width)}" height="{int(height)}" viewBox="0 0 {int(width)} {int(height)}" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
+        '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#111722"/><stop offset="1" stop-color="#0d1117"/></linearGradient></defs>',
+        f'<rect width="{int(width)}" height="{int(height)}" rx="12" fill="url(#bg)"/>',
+        f'<rect x=".5" y=".5" width="{int(width) - 1}" height="{int(height) - 1}" rx="12" fill="none" stroke="#30363d"/>',
+        f'<line x1="0" y1="30" x2="{int(width)}" y2="30" stroke="#30363d"/>',
+        '<circle cx="20" cy="15" r="5" fill="#ff5f56"/>',
+        '<circle cx="36" cy="15" r="5" fill="#ffbd2e"/>',
+        '<circle cx="52" cy="15" r="5" fill="#27c93f"/>',
+        f'<text x="{int(width) / 2:.1f}" y="19" fill="#7d8590" font-size="12" text-anchor="middle">aditya@github: ~$ ./portrait.sh</text>',
     ]
 
-    typed_lines = [
-        ("rendering face profile...", 134, 0.08),
-        ("contrast boost applied", 158, 0.22),
-        ("displaying visible portrait", 182, 0.36),
-    ]
-    for idx, (text, y, begin) in enumerate(typed_lines):
-        clip_id = f"r{idx}"
+    for row_idx, row in enumerate(ascii_grid):
+        y = 37 + row_idx * 13
+        if y > 840:
+            break
+        clip_id = f"r{row_idx}"
         svg_lines.extend([
-            f'    <clipPath id="{clip_id}"><rect x="80" y="{y - 11}" height="15" width="0"><animate attributeName="width" from="0" to="600" begin="{begin:.2f}s" dur="0.14s" fill="freeze"/></rect></clipPath>',
-            f'    <g clip-path="url(#{clip_id})"><text xml:space="preserve" x="80" y="{y}" fill="#c9d1d9" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">{escape_xml(text)}</text></g>',
-            f'    <rect y="{y - 10}" width="8" height="13" fill="#c9d1d9" opacity="0"><animate attributeName="x" from="80" to="680" begin="{begin:.2f}s" dur="0.14s" fill="freeze"/><set attributeName="opacity" to=".85" begin="{begin:.2f}s"/><set attributeName="opacity" to="0" begin="{begin + 0.14:.2f}s"/></rect>',
+            f'<clipPath id="{clip_id}"><rect x="20" y="{y - 11}" height="15" width="0"><animate attributeName="width" from="0" to="800" begin="{row_idx * 0.05:.2f}s" dur="0.11s" fill="freeze"/></rect></clipPath>',
+            f'<g clip-path="url(#{clip_id})"><text xml:space="preserve" x="20" y="{y}" fill="#c9d1d9" font-size="12.9" textLength="800" lengthAdjust="spacing">{escape_xml(" " * 0 + row)}</text></g>',
+            f'<rect y="{y - 11}" width="8" height="13" fill="#c9d1d9" opacity="0"><animate attributeName="x" from="20" to="820" begin="{row_idx * 0.05:.2f}s" dur="0.11s" fill="freeze"/><set attributeName="opacity" to=".85" begin="{row_idx * 0.05:.2f}s"/><set attributeName="opacity" to="0" begin="{row_idx * 0.05 + 0.11:.2f}s"/></rect>',
         ])
 
     svg_lines.extend([
-        '    <g opacity="0">',
-        '      <animate attributeName="opacity" from="0" to="1" begin="0.50s" dur="0.35s" fill="freeze"/>',
-        f'      <image href="{photo_uri}" x="80" y="100" width="360" height="450" preserveAspectRatio="xMidYMid meet"/>',
-        '      <rect x="80" y="100" width="360" height="450" rx="10" fill="none" stroke="#2f3b4a" stroke-width="1"/>',
-        '      <text x="80" y="590" fill="#d9d1d9" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Aditya Mishra</text>',
-        '      <text x="80" y="615" fill="#7d8590" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Data Science • AI • Web Development</text>',
-        '      <line x1="480" y1="110" x2="660" y2="110" stroke="#1f6feb" stroke-opacity="0.45"/>',
-        '      <text x="480" y="150" fill="#7d8590" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Focus</text>',
-        '      <text x="480" y="176" fill="#d9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Building useful AI tools</text>',
-        '      <text x="480" y="235" fill="#7d8590" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Current stack</text>',
-        '      <text x="480" y="260" fill="#d9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Python • React • MongoDB</text>',
-        '      <rect x="480" y="290" width="150" height="10" rx="5" fill="#16212e"/>',
-        '      <rect x="480" y="290" width="110" height="10" rx="5" fill="#3fb950"/>',
-        '      <text x="480" y="335" fill="#7d8590" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Availability</text>',
-        '      <text x="480" y="360" fill="#d9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Open to interesting work</text>',
-        '    </g>',
-        '  </g>',
+        '<line x1="0" y1="862" x2="840" y2="862" stroke="#30363d"/>',
+        '<text x="20" y="881" fill="#7d8590" font-size="13">aditya@github:~$ whoami <tspan fill="#c9d1d9">Aditya Mishra</tspan></text>',
+        '</svg>',
     ])
-
-    svg_lines.append('</svg>')
     svg_content = "\n".join(svg_lines)
 
     with open(output_file, "w", encoding="utf-8") as f:
