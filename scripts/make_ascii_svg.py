@@ -5,22 +5,22 @@ Reads source-prepped.png and outputs avi-ascii.svg
 """
 
 import numpy as np
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 # ===== CONFIG SECTION - TUNE THIS =====
 INPUT_IMAGE = "source-prepped.png"
 OUTPUT_SVG = "avi-ascii.svg"
-WIDTH = 80
-CONTRAST = 1.6
-GAMMA = 1.15
-WHITE_FLOOR = 26
+WIDTH = 84
+CONTRAST = 2.1
+GAMMA = 1.18
+WHITE_FLOOR = 20
 STATIC = 0
 BACKGROUND = "#111722"
 TEXT_COLOR = "#d9d1d9"
 ACCENT_COLOR = "#3fb950"
 # ======================================
 
-ASCII_CHARS = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
+ASCII_CHARS = "@%#*+=-:. "
 
 
 def brightness_to_ascii(brightness):
@@ -28,9 +28,11 @@ def brightness_to_ascii(brightness):
     return ASCII_CHARS[index]
 
 
-def image_to_ascii(image_path, width=80):
+def image_to_ascii(image_path, width=84):
     print(f"Loading image: {image_path}")
     img = Image.open(image_path).convert("L")
+    img = ImageOps.autocontrast(img, cutoff=1)
+    img = img.filter(ImageFilter.UnsharpMask(radius=1.0, percent=140, threshold=2))
 
     if CONTRAST != 1.0:
         img = ImageEnhance.Contrast(img).enhance(CONTRAST)
@@ -46,8 +48,8 @@ def image_to_ascii(image_path, width=80):
         img = Image.fromarray(img_array)
 
     aspect_ratio = img.height / img.width
-    height = int(width * aspect_ratio * 0.55)
-    img = img.resize((width, height))
+    height = int(width * aspect_ratio * 0.58)
+    img = img.resize((width, height), Image.Resampling.LANCZOS)
 
     pixels = np.array(img)
     return ["".join(brightness_to_ascii(pixel) for pixel in row) for row in pixels]
@@ -64,10 +66,10 @@ def escape_xml(text):
 
 
 def create_animated_svg(ascii_grid, output_file, static=False):
-    font_size = 12
-    line_height = 13
-    char_width = 7
-    width = max(320, len(ascii_grid[0]) * char_width + 90)
+    font_size = 12.5
+    line_height = 13.0
+    char_width = 6.5
+    width = max(360, len(ascii_grid[0]) * char_width + 90)
     height = 72 + len(ascii_grid) * line_height + 24
 
     svg_lines = [
