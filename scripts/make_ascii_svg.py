@@ -88,7 +88,7 @@ def create_animated_svg(ascii_grid, output_file, static=False, input_image=INPUT
         clip_id = f"r{row_idx}"
         svg_lines.extend([
             f'<clipPath id="{clip_id}"><rect x="20" y="{y - 11}" height="15" width="0"><animate attributeName="width" from="0" to="800" begin="{row_idx * 0.05:.2f}s" dur="0.11s" fill="freeze"/></rect></clipPath>',
-            f'<g clip-path="url(#{clip_id})"><text xml:space="preserve" x="20" y="{y}" fill="#c9d1d9" font-size="12.9" textLength="800" lengthAdjust="spacing">{escape_xml(" " * 0 + row)}</text></g>',
+            f'<g clip-path="url(#{clip_id})"><text xml:space="preserve" x="20" y="{y}" fill="#c9d1d9" font-size="12.9" textLength="800" lengthAdjust="spacing">{escape_xml(row)}</text></g>',
             f'<rect y="{y - 11}" width="8" height="13" fill="#c9d1d9" opacity="0"><animate attributeName="x" from="20" to="820" begin="{row_idx * 0.05:.2f}s" dur="0.11s" fill="freeze"/><set attributeName="opacity" to=".85" begin="{row_idx * 0.05:.2f}s"/><set attributeName="opacity" to="0" begin="{row_idx * 0.05 + 0.11:.2f}s"/></rect>',
         ])
 
