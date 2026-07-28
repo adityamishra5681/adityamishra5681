@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-make_ascii_svg.py - Convert image to animated ASCII art SVG
-Reads source-prepped.png and outputs avi-ascii.svg
+make_ascii_svg.py - Convert image to animated ASCII-art SVG in the frex style.
 """
 
 import numpy as np
@@ -10,10 +9,10 @@ from PIL import Image, ImageEnhance
 # ===== CONFIG SECTION - TUNE THIS =====
 INPUT_IMAGE = "source-prepped.png"
 OUTPUT_SVG = "avi-ascii.svg"
-WIDTH = 80
-CONTRAST = 1.6
-GAMMA = 1.15
-WHITE_FLOOR = 26
+WIDTH = 72
+CONTRAST = 1.7
+GAMMA = 1.14
+WHITE_FLOOR = 24
 STATIC = 0
 BACKGROUND = "#111722"
 TEXT_COLOR = "#d9d1d9"
@@ -28,7 +27,7 @@ def brightness_to_ascii(brightness):
     return ASCII_CHARS[index]
 
 
-def image_to_ascii(image_path, width=80):
+def image_to_ascii(image_path, width=72):
     print(f"Loading image: {image_path}")
     img = Image.open(image_path).convert("L")
 
@@ -63,49 +62,63 @@ def escape_xml(text):
     )
 
 
+def build_reveal_text(text, x, y, fill, size, begin):
+    parts = [f'<text x="{x}" y="{y:.1f}" font-size="{size}" fill="{fill}" style="letter-spacing:-0.3px;">']
+    for idx, ch in enumerate(text):
+        ch_text = escape_xml(ch)
+        if ch == " ":
+            ch_text = "&#160;"
+        start = begin + idx * 0.05
+        parts.append(f'<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="{start:.2f}s" dur="0.01s" fill="freeze"/>{ch_text}</tspan>')
+    parts.append('</text>')
+    return parts
+
+
 def create_animated_svg(ascii_grid, output_file, static=False):
-    font_size = 12
-    line_height = 13
-    char_width = 7
-    width = max(320, len(ascii_grid[0]) * char_width + 90)
-    height = 72 + len(ascii_grid) * line_height + 24
+    width = 480
+    height = 390
+    font_size = 11
+    line_height = 11.3
+    rows = ascii_grid[:24]
 
     svg_lines = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{int(width)}" height="{int(height)}" viewBox="0 0 {int(width)} {int(height)}">',
-        '  <defs>',
-        '    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">',
-        f'      <stop offset="0" stop-color="{BACKGROUND}"/>',
-        '      <stop offset="1" stop-color="#0d1117"/>',
-        '    </linearGradient>',
-        '  </defs>',
-        f'  <rect width="{int(width)}" height="{int(height)}" rx="14" fill="url(#bg)"/>',
-        f'  <rect x="0.8" y="0.8" width="{int(width) - 1.6}" height="{int(height) - 1.6}" rx="14" fill="none" stroke="#30363d" stroke-width="1"/>',
-        f'  <line x1="0" y1="38" x2="{int(width)}" y2="38" stroke="#30363d"/>',
-        '  <circle cx="20" cy="15" r="5" fill="#ff5f56"/>',
-        '  <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>',
-        '  <circle cx="52" cy="15" r="5" fill="#27c93f"/>',
-        f'  <text x="{int(width) / 2:.1f}" y="19" fill="#7d8590" font-size="12" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">aditya@github: ~$ ./portrait.sh</text>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
+        '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#111722"/><stop offset="1" stop-color="#0d1117"/></linearGradient></defs>',
+        f'<rect width="{width}" height="{height}" rx="12" fill="url(#bg)"/>',
+        f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" fill="none" stroke="#30363d"/>',
+        f'<line x1="0" y1="30" x2="{width}" y2="30" stroke="#30363d"/>',
+        '<circle cx="20" cy="15.0" r="5" fill="#ff5f56"/>',
+        '<circle cx="36" cy="15.0" r="5" fill="#ffbd2e"/>',
+        '<circle cx="52" cy="15.0" r="5" fill="#27c93f"/>',
+        f'<text x="{width / 2:.1f}" y="19.0" fill="#7d8590" font-size="12" text-anchor="middle">aditya@github: ~$ ./portrait.sh</text>',
+        '<g transform="translate(0,5)">',
     ]
 
-    for idx, row in enumerate(ascii_grid):
-        y = 48 + idx * line_height
-        line_text = f"> {row}"
-        svg_lines.extend([
-            f'  <g opacity="0">',
-            f'    <animate attributeName="opacity" from="0" to="1" begin="{0.08 + idx * 0.06:.2f}s" dur="0.16s" fill="freeze"/>',
-            f'    <text x="18" y="{y}" fill="{TEXT_COLOR}" font-size="{font_size}" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">{escape_xml(line_text)}</text>',
-            '  </g>',
-        ])
+    svg_lines.extend(build_reveal_text("Aditya Mishra", 20, 60.0, ACCENT_COLOR, 22, 0.05))
+    svg_lines.extend(build_reveal_text("Data Science & AI • Web Development", 20, 84.0, TEXT_COLOR, 11.8, 0.45))
 
-    svg_lines.append('</svg>')
+    for idx, row in enumerate(rows):
+        y = 106 + idx * line_height
+        prefix = "> "
+        line_text = prefix + row
+        svg_lines.append(f'<text x="20" y="{y:.1f}" font-size="{font_size}" fill="{TEXT_COLOR}" style="letter-spacing:-0.3px;">')
+        for char_idx, ch in enumerate(line_text):
+            ch_text = escape_xml(ch)
+            if ch == " ":
+                ch_text = "&#160;"
+            start = 0.7 + idx * 0.03 + char_idx * 0.008
+            svg_lines.append(f'<tspan opacity="0"><animate attributeName="opacity" from="0" to="1" begin="{start:.2f}s" dur="0.01s" fill="freeze"/>{ch_text}</tspan>')
+        svg_lines.append('</text>')
+
+    svg_lines.append('</g></svg>')
     svg_content = "\n".join(svg_lines)
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(svg_content)
 
     print(f"✓ Created: {output_file}")
-    print(f"  Size: {int(width)}x{int(height)}px")
-    print(f"  Rows: {len(ascii_grid)}")
+    print(f"  Size: {width}x{height}px")
+    print(f"  Rows: {len(rows)}")
 
 
 if __name__ == "__main__":
